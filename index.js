@@ -33,7 +33,11 @@ server.post("/api/users", (req, res) => {
 
 
 server.get("/api/users", (req, res) => {
-    res.status(200)
+    if (users){
+        res.status(200).json(users)
+    } else {
+        res.status(500).json({errorMessage: "users cannot be found"})
+    }
 })
 
 
